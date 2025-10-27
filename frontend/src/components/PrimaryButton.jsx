@@ -1,9 +1,12 @@
 import React from "react";
 
-export default function PrimaryButton({ text }) {
+export default function PrimaryButton({ label, onClick, className = "" }) {
   return (
-    <button className="bg-gradient-to-r from-yellow-500 to-yellow-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition-transform">
-      {text}
+    <button
+      onClick={onClick}
+      className={`bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300 ${className}`}
+    >
+      {label}
     </button>
   );
 }

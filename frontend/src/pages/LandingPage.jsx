@@ -1,52 +1,45 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/NavBar";
+import Card from "../components/Card";
+import PrimaryButton from "../components/PrimaryButton";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
+  const featuredCars = [
+    {
+      id: 1,
+      title: "LuxAuto Royale",
+      image:
+        "https://images.unsplash.com/photo-1532751203793-812308a10d8e?auto=format&fit=crop&w=800&q=80",
+      description:
+        "A timeless masterpiece that blends elegance and modern power — the ultimate luxury sedan.",
+      link: "/models",
+    },
+    {
+      id: 2,
+      title: "LuxAuto Titan",
+      image:
+        "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Designed for those who demand comfort, space, and dominance on the road — a luxury SUV redefining power.",
+      link: "/models",
+    },
+    {
+      id: 3,
+      title: "LuxAuto Velocity",
+      image:
+        "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80",
+      description:
+        "Feel the thrill with cutting-edge aerodynamics and breathtaking acceleration in our luxury sports model.",
+      link: "/models",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-8 py-4 bg-black bg-opacity-80 fixed w-full z-50 backdrop-blur-md">
-        <h1
-          className="text-3xl font-bold text-yellow-500 tracking-widest cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          LuxAuto
-        </h1>
-        <ul className="hidden md:flex space-x-8 text-lg">
-          <li
-            onClick={() => navigate("/")}
-            className="hover:text-yellow-400 cursor-pointer transition duration-300"
-          >
-            Home
-          </li>
-          <li
-            onClick={() => navigate("/models")}
-            className="hover:text-yellow-400 cursor-pointer transition duration-300"
-          >
-            Models
-          </li>
-          <li
-            onClick={() => navigate("/services")}
-            className="hover:text-yellow-400 cursor-pointer transition duration-300"
-          >
-            Services
-          </li>
-          <li
-            onClick={() => navigate("/contact")}
-            className="hover:text-yellow-400 cursor-pointer transition duration-300"
-          >
-            Contact
-          </li>
-        </ul>
-        <button
-          onClick={() => navigate("/order")}
-          className="bg-black text-white px-5 py-2 rounded-full font-semibold border border-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300"
-        >
-          Order Now
-        </button>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section
@@ -60,10 +53,9 @@ export default function LandingPage() {
       >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-        {/* Hero Content */}
         <div className="relative z-10 max-w-xl space-y-6">
           <h2 className="text-5xl md:text-7xl font-bold text-yellow-500 leading-tight">
-            Drive in Luxury.  
+            Drive in Luxury.
             <br />
             Live the Experience.
           </h2>
@@ -71,97 +63,28 @@ export default function LandingPage() {
             Explore our world-class lineup of premium vehicles designed for those who crave style, comfort, and performance.
           </p>
           <div className="space-x-4">
-            <button
-              onClick={() => navigate("/models")}
-              className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300"
-            >
-              Explore Models
-            </button>
-            <button
-              onClick={() => navigate("/services")}
-              className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300"
-            >
-              Learn More
-            </button>
+            <PrimaryButton label="Explore Models" onClick={() => navigate("/models")} />
+            <PrimaryButton label="Learn More" onClick={() => navigate("/services")} />
           </div>
         </div>
       </section>
 
-      {/* Featured Models Section */}
+      {/* Featured Models */}
       <section className="py-24 bg-gradient-to-b from-black to-gray-900 px-8 md:px-20 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-12">
           Featured Models
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Card 1 */}
-          <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-yellow-500/30 transition duration-300">
-            <img
-              src="https://images.unsplash.com/photo-1532751203793-812308a10d8e?auto=format&fit=crop&w=800&q=80"
-              alt="Luxury Sedan"
-              className="w-full h-64 object-cover"
+          {featuredCars.map((car) => (
+            <Card
+              key={car.id}
+              image={car.image}
+              title={car.title}
+              description={car.description}
+              link={car.link}
             />
-            <div className="p-6 text-left">
-              <h3 className="text-2xl font-semibold text-yellow-400 mb-2">
-                LuxAuto Royale
-              </h3>
-              <p className="text-gray-400 mb-4">
-                A timeless masterpiece that blends elegance and modern power — the ultimate luxury sedan.
-              </p>
-              <button
-                onClick={() => navigate("/models")}
-                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-yellow-500/30 transition duration-300">
-            <img
-              src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80"
-              alt="Luxury SUV"
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-6 text-left">
-              <h3 className="text-2xl font-semibold text-yellow-400 mb-2">
-                LuxAuto Titan
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Designed for those who demand comfort, space, and dominance on the road — a luxury SUV redefining power.
-              </p>
-              <button
-                onClick={() => navigate("/models")}
-                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-yellow-500/30 transition duration-300">
-            <img
-              src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80"
-              alt="Sports Car"
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-6 text-left">
-              <h3 className="text-2xl font-semibold text-yellow-400 mb-2">
-                LuxAuto Velocity
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Feel the thrill with cutting-edge aerodynamics and breathtaking acceleration in our luxury sports model.
-              </p>
-              <button
-                onClick={() => navigate("/models")}
-                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </div>

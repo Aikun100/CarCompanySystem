@@ -1,21 +1,30 @@
-// src/components/Card.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import PrimaryButton from "./PrimaryButton";
 
-const Card = ({ icon, title, description, onClick }) => {
+export default function Card({ image, title, description, price, link }) {
+  const navigate = useNavigate();
+
   return (
-    <div
-      onClick={onClick}
-      className="bg-white border border-gray-200 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
-    >
-      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-        {icon}
+    <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-yellow-500/30 transition duration-300">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-64 object-cover"
+      />
+      <div className="p-6 text-left">
+        <h3 className="text-2xl font-semibold text-yellow-400 mb-2">{title}</h3>
+        <p className="text-gray-400 mb-4">{description}</p>
+
+        {price && (
+          <p className="text-lg font-bold text-yellow-500 mb-4">{price}</p>
+        )}
+
+        <PrimaryButton
+          label="View Details"
+          onClick={() => navigate(link || "/models")}
+        />
       </div>
-      <h4 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-indigo-600 transition-colors">
-        {title}
-      </h4>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
     </div>
   );
-};
-
-export default Card;
+}
