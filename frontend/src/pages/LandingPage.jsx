@@ -1,28 +1,49 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-4 bg-black bg-opacity-80 fixed w-full z-50 backdrop-blur-md">
-        <h1 className="text-3xl font-bold text-yellow-500 tracking-widest">
+        <h1
+          className="text-3xl font-bold text-yellow-500 tracking-widest cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           LuxAuto
         </h1>
         <ul className="hidden md:flex space-x-8 text-lg">
-          <li className="hover:text-yellow-400 cursor-pointer transition duration-300">
+          <li
+            onClick={() => navigate("/")}
+            className="hover:text-yellow-400 cursor-pointer transition duration-300"
+          >
             Home
           </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition duration-300">
+          <li
+            onClick={() => navigate("/models")}
+            className="hover:text-yellow-400 cursor-pointer transition duration-300"
+          >
             Models
           </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition duration-300">
+          <li
+            onClick={() => navigate("/services")}
+            className="hover:text-yellow-400 cursor-pointer transition duration-300"
+          >
             Services
           </li>
-          <li className="hover:text-yellow-400 cursor-pointer transition duration-300">
+          <li
+            onClick={() => navigate("/contact")}
+            className="hover:text-yellow-400 cursor-pointer transition duration-300"
+          >
             Contact
           </li>
         </ul>
-        <button className="bg-black text-white px-5 py-2 rounded-full font-semibold border border-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300">
+        <button
+          onClick={() => navigate("/order")}
+          className="bg-black text-white px-5 py-2 rounded-full font-semibold border border-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300"
+        >
           Order Now
         </button>
       </nav>
@@ -50,10 +71,16 @@ export default function LandingPage() {
             Explore our world-class lineup of premium vehicles designed for those who crave style, comfort, and performance.
           </p>
           <div className="space-x-4">
-            <button className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300">
+            <button
+              onClick={() => navigate("/models")}
+              className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300"
+            >
               Explore Models
             </button>
-            <button className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300">
+            <button
+              onClick={() => navigate("/services")}
+              className="bg-black text-white border border-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-black transition duration-300"
+            >
               Learn More
             </button>
           </div>
@@ -70,7 +97,7 @@ export default function LandingPage() {
           {/* Card 1 */}
           <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-yellow-500/30 transition duration-300">
             <img
-              src="https://images.unsplash.com/photo-1532751203793-812308a10d8e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=646"
+              src="https://images.unsplash.com/photo-1532751203793-812308a10d8e?auto=format&fit=crop&w=800&q=80"
               alt="Luxury Sedan"
               className="w-full h-64 object-cover"
             />
@@ -81,7 +108,10 @@ export default function LandingPage() {
               <p className="text-gray-400 mb-4">
                 A timeless masterpiece that blends elegance and modern power — the ultimate luxury sedan.
               </p>
-              <button className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition">
+              <button
+                onClick={() => navigate("/models")}
+                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
+              >
                 View Details
               </button>
             </div>
@@ -101,7 +131,10 @@ export default function LandingPage() {
               <p className="text-gray-400 mb-4">
                 Designed for those who demand comfort, space, and dominance on the road — a luxury SUV redefining power.
               </p>
-              <button className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition">
+              <button
+                onClick={() => navigate("/models")}
+                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
+              >
                 View Details
               </button>
             </div>
@@ -121,7 +154,10 @@ export default function LandingPage() {
               <p className="text-gray-400 mb-4">
                 Feel the thrill with cutting-edge aerodynamics and breathtaking acceleration in our luxury sports model.
               </p>
-              <button className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition">
+              <button
+                onClick={() => navigate("/models")}
+                className="bg-black text-white border border-yellow-500 px-5 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition"
+              >
                 View Details
               </button>
             </div>
